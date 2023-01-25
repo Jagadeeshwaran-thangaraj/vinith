@@ -150,6 +150,7 @@ def send_ned_velocity(vehicle,velocity_x, velocity_y, velocity_z, duration):
     for x in range(0,duration):
         vehicle.send_mavlink(msg)
         time.sleep(0.01)
+arm_and_takeoff(1)
 
 while True:
 
@@ -210,12 +211,7 @@ while True:
                             math.degrees(yaw_camera))
         cv2.putText(frame, str_attitude, (0, 250), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
 
-        send_ned_velocity(vehicle,roll_camera,pitch_camera,yaw_camera)
-
-
-
-    
-
+        send_ned_velocity(vehicle,roll_camera,pitch_camera,0)
 
     #--- Display the frame
     cv2.imshow('frame', frame)
